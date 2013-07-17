@@ -1,9 +1,9 @@
-local mining_drill_max_charge=60000
-local mining_drill_mk2_max_charge=240000
-local mining_drill_mk3_max_charge=960000
-local mining_drill_power_usage=200
-local mining_drill_mk2_power_usage=600
-local mining_drill_mk3_power_usage=1800
+local mining_drill_max_charge      = 60000
+local mining_drill_mk2_max_charge  = 240000
+local mining_drill_mk3_max_charge  = 960000
+local mining_drill_power_usage     = 200
+local mining_drill_mk2_power_usage = 600
+local mining_drill_mk3_power_usage = 1800
 
 minetest.register_craft({
 	output = 'technic:mining_drill',
@@ -210,7 +210,7 @@ function drill_dig_it4 (pos,player)
 	drill_dig_it0 (pos,player)
 end
 
-technic.register_power_tool ("technic:mining_drill",mining_drill_max_charge)
+technic.register_power_tool("technic:mining_drill", mining_drill_max_charge)
 minetest.register_tool("technic:mining_drill", {
 	description = "Mining Drill Mk1",
 	inventory_image = "technic_mining_drill.png",
@@ -243,20 +243,21 @@ minetest.register_tool("technic:mining_drill_mk2", {
 	return itemstack
 	end,
 })
-technic.register_power_tool ("technic:mining_drill_mk2",mining_drill_mk2_max_charge)
+
+technic.register_power_tool("technic:mining_drill_mk2", mining_drill_mk2_max_charge)
 
 for i=1,4,1 do
-technic.register_power_tool ("technic:mining_drill_mk2_"..i,mining_drill_mk2_max_charge)
-minetest.register_tool("technic:mining_drill_mk2_"..i, {
-	description = "Mining Drill Mk2 in Mode "..i,
-	inventory_image = "technic_mining_drill_mk2.png^technic_tool_mode"..i..".png",
-	wield_image = "technic_mining_drill_mk2.png",
-	groups = {not_in_creative_inventory=1},
-	on_use = function(itemstack, user, pointed_thing)
-	mining_drill_mk2_handler(itemstack,user,pointed_thing)
-	return itemstack
-	end,
-})
+	technic.register_power_tool("technic:mining_drill_mk2_"..i, mining_drill_mk2_max_charge)
+	minetest.register_tool("technic:mining_drill_mk2_"..i, {
+		description = "Mining Drill Mk2 in Mode "..i,
+		inventory_image = "technic_mining_drill_mk2.png^technic_tool_mode"..i..".png",
+		wield_image = "technic_mining_drill_mk2.png",
+		groups = {not_in_creative_inventory=1},
+		on_use = function(itemstack, user, pointed_thing)
+		mining_drill_mk2_handler(itemstack,user,pointed_thing)
+		return itemstack
+		end,
+	})
 end
 
 minetest.register_tool("technic:mining_drill_mk3", {
@@ -267,20 +268,21 @@ minetest.register_tool("technic:mining_drill_mk3", {
 	return itemstack
 	end,
 })
-technic.register_power_tool ("technic:mining_drill_mk3",mining_drill_mk3_max_charge)
+
+technic.register_power_tool("technic:mining_drill_mk3", mining_drill_mk3_max_charge)
 
 for i=1,5,1 do
-technic.register_power_tool ("technic:mining_drill_mk3_"..i,mining_drill_mk3_max_charge)
-minetest.register_tool("technic:mining_drill_mk3_"..i, {
-	description = "Mining Drill Mk3 in Mode "..i,
-	inventory_image = "technic_mining_drill_mk3.png^technic_tool_mode"..i..".png",
-	wield_image = "technic_mining_drill_mk3.png",
-	groups = {not_in_creative_inventory=1},
-	on_use = function(itemstack, user, pointed_thing)
-	mining_drill_mk3_handler(itemstack,user,pointed_thing)
-	return itemstack
-	end,
-})
+	technic.register_power_tool("technic:mining_drill_mk3_"..i, mining_drill_mk3_max_charge)
+	minetest.register_tool("technic:mining_drill_mk3_"..i, {
+		description = "Mining Drill Mk3 in Mode "..i,
+		inventory_image = "technic_mining_drill_mk3.png^technic_tool_mode"..i..".png",
+		wield_image = "technic_mining_drill_mk3.png",
+		groups = {not_in_creative_inventory=1},
+		on_use = function(itemstack, user, pointed_thing)
+		mining_drill_mk3_handler(itemstack,user,pointed_thing)
+		return itemstack
+		end,
+	})
 end
 
 function mining_drill_mk2_handler (itemstack,user,pointed_thing)
@@ -382,3 +384,4 @@ function mining_drill_mk3_setmode(user,itemstack)
 	itemstack:replace(item)
 	return itemstack
 end
+
